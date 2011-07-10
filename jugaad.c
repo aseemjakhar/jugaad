@@ -512,15 +512,37 @@ int jg_waitpid(int pid, int options)
 /*
  * For API documentation read jugaad.h
  */
-
 int create_remote_thread(pid_t pid,
                          size_t stack_size,
                          unsigned char * tpayload,
-                         size_t tpsize,
-                         int thread_flags,
-                         int mmap_prot,
-                         int mmap_flags,
-                         void * bkpaddr)
+                         size_t tpsize)
+{
+    int ret = 0;
+    DENTER();
+    ret = create_remote_thread_ex(pid,
+                                  stack_size,
+                                  tpayload,
+                                  tpsize,
+                                  0,
+                                  0,
+                                  0,
+                                  NULL);
+    DEXIT();
+    return ret;
+}
+
+/*
+ * For API documentation read jugaad.h
+ */
+
+int create_remote_thread_ex(pid_t pid,
+                            size_t stack_size,
+                            unsigned char * tpayload,
+                            size_t tpsize,
+                            int thread_flags,
+                            int mmap_prot,
+                            int mmap_flags,
+                            void * bkpaddr)
 {
     long pret = 0;
     int attached = 0;

@@ -59,32 +59,28 @@ int main(int argc, char * argv[])
 
     printf("Jugaad Version %s\n", jugaad_version());
     ret = create_remote_thread(pid,
-                               0,
+                               20000,
                                (unsigned char *)WRITE_FILE,
-                               (sizeof(WRITE_FILE) - 1),
-                               0,
-                               0,
-                               0,
-                               NULL);
+                               (sizeof(WRITE_FILE) - 1));
     
     /*
-    ret = create_remote_thread(pid,
-                               20000,
-                               (unsigned char *)WRITE_FILE,
-                               (sizeof(WRITE_FILE) - 1),
-                               CLONE_THREAD | CLONE_VM | CLONE_SIGHAND,
-                               PROT_EXEC | PROT_READ | PROT_WRITE,
-                               MAP_PRIVATE | MAP_ANONYMOUS,
-                               (void *)DEFAULT_BKPADDR);
+    ret = create_remote_thread_ex(pid,
+                                  20000,
+                                  (unsigned char *)WRITE_FILE,
+                                  (sizeof(WRITE_FILE) - 1),
+                                  CLONE_THREAD | CLONE_VM | CLONE_SIGHAND,
+                                  PROT_EXEC | PROT_READ | PROT_WRITE,
+                                  MAP_PRIVATE | MAP_ANONYMOUS,
+                                  (void *)DEFAULT_BKPADDR);
     
-    ret = create_remote_thread(pid,
-                               20000,
-                               (unsigned char *)TCP_BIND4444,
-                               (sizeof(TCP_BIND4444) - 1),
-                               CLONE_THREAD | CLONE_VM | CLONE_SIGHAND,
-                               PROT_EXEC | PROT_READ | PROT_WRITE,
-                               MAP_PRIVATE | MAP_ANONYMOUS,
-                               (void *)DEFAULT_BKPADDR);
+    ret = create_remote_thread_ex(pid,
+                                  20000,
+                                  (unsigned char *)TCP_BIND4444,
+                                  (sizeof(TCP_BIND4444) - 1),
+                                  CLONE_THREAD | CLONE_VM | CLONE_SIGHAND,
+                                  PROT_EXEC | PROT_READ | PROT_WRITE,
+                                  MAP_PRIVATE | MAP_ANONYMOUS,
+                                  (void *)DEFAULT_BKPADDR);
     */
     printf("create_remote_thread() returned (%d)\n", ret);
 

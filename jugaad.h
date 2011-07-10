@@ -113,14 +113,19 @@ extern "C" {
  * @return  Zero on success, non-zero otherwise.
  *
  */
+int create_remote_thread_ex(pid_t pid,
+                            size_t stack_size,
+                            unsigned char * tpayload,
+                            size_t tpsize,
+                            int thread_flags,
+                            int mmap_prot,
+                            int mmap_flags,
+                            void * bkpaddr);
+
 int create_remote_thread(pid_t pid,
                          size_t stack_size,
                          unsigned char * tpayload,
-                         size_t tpsize,
-                         int thread_flags,
-                         int mmap_prot,
-                         int mmap_flags,
-                         void * bkpaddr);
+                         size_t tpsize);
 
 /*
  * Returns a static string specifying jugaad version
